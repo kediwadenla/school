@@ -1,7 +1,8 @@
 import { SET_SAMPLE } from '../src/actions/actionType';
 
 let initialState = {
-  userData: [],
+  userData: {name: {}},
+  isLoading: true
 }
 
 export default quotes = (state = initialState, action) => {
