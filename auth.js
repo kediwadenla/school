@@ -1,0 +1,18 @@
+import { AsyncStorage } from "react-native";
+
+let key = ['token', 'user_id'];
+export const onSignOut = () => AsyncStorage.multiRemove(key);
+
+export const isSignedIn = () => {
+  return new Promise((resolve, reject) => {
+    AsyncStorage.getItem('token')
+      .then(res => {
+        if (res !== null) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      })
+      .catch(err => reject(err));
+  });
+};

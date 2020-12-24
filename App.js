@@ -1,21 +1,63 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { View, Platform, AsyncStorage, Text, StatusBar } from 'react-native';
+import { isSignedIn } from "./auth";
+import { AppLoading, Notifications } from "expo";
+import store from './store';
+import {Provider} from 'react-redux';
+import { createRootNavigator } from './newRouter';
+import { NavigationContainer } from '@react-navigation/native';
+export default class App extends React.Component {
+  constructor(props) {
+    super (props);
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    this.state = {
+      signedIn: false,
+      checkedSignIn: false,
+      loading: true
+    };
+  }
+
+  componentDidMount () {
+    isSignedIn()
+      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
+      .catch(err => alert(err));
+    if (Platform.OS === 'android') {
+      Notifications.createChannelAndroidAsync('reminders', {
+        name: 'Reminders',
+        priority: 'max',
+        sound: true,
+        vibrate: [0, 250, 250, 250],
+      });
+    }
+  }
+
+  async UNSAFE_componentWillMount() {
+    this.setState({ loading: false });
+  }
+
+  render() {
+    const { checkedSignIn, signedIn } = this.state;
+    if (this.state.loading) {
+      return (
+        <View>
+          <AppLoading />
+        </View>
+      );
+    }
+
+    if (!checkedSignIn) {
+      return null;
+    }
+    return (
+      <Provider store={store}>
+        <NavigationContainer>
+          <Provider store={store}>
+            {createRootNavigator(!signedIn)}
+          </Provider>
+        </NavigationContainer>
+      </Provider>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
