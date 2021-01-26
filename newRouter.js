@@ -55,12 +55,52 @@ function mainFlow() {
         }}
       />
       <Tab.Screen 
-        name="OtherTab"
+        name="Mapel"
         component={StackOther}
         options={{
-          tabBarLabel: 'Other',
+          tabBarLabel: 'Mapel',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="carryout" color={color} size={size} />
+            <Icon name="book" color={color} size={25} />
+          ),
+        }}
+      />
+      <Tab.Screen 
+        name="Statistik"
+        component={StackOther}
+        options={{
+          tabBarLabel: 'Statistik',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="piechart" color={color} size={23} />
+          ),
+        }}
+      />
+      <Tab.Screen 
+        name="Diskusi"
+        component={StackOther}
+        options={{
+          tabBarLabel: 'Diskusi',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="wechat" color={color} size={27} />
+          ),
+        }}
+      />
+      <Tab.Screen 
+        name="Keuangan"
+        component={StackOther}
+        options={{
+          tabBarLabel: 'Keuangan',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="creditcard" color={color} size={25} />
+          ),
+        }}
+      />
+      <Tab.Screen 
+        name="Profile"
+        component={StackOther}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="user" color={color} size={size} />
           ),
         }}
       />

@@ -40,9 +40,9 @@ function SiswaTabs() {
           ),
         }}
       />
-      <Tab.Screen name="Order" component={OtherPages}
+      <Tab.Screen name="Mapel" component={OtherPages}
         options={{
-          tabBarLabel: 'Order',
+          tabBarLabel: 'Mapel',
           tabBarIcon: ({ color, size }) => (
             <Icon name="carryout" color={color} size={size} />
           ),
