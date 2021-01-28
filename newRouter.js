@@ -4,12 +4,14 @@ import React, { Component } from "react";
 import Login from './src/pages/Landing/Login';
 import Home from './src/pages/TabHome/Home';
 import OtherPages from './src/pages/TabOther/Other';
+import MapelPages from './src/pages/TabOther/Mapel';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Other from "./src/pages/TabOther/Other";
+
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,7 +21,7 @@ const StackLogin = () => (
     <Stack.Screen name="Login" component={Login}
       options={{
         headerShown: false,
-      }}/>
+      }} />
   </Stack.Navigator>
 );
 
@@ -28,7 +30,7 @@ const StackHome = () => (
     <Stack.Screen name="Home" component={Home}
       options={{
         headerShown: false,
-      }}/>
+      }} />
   </Stack.Navigator>
 );
 
@@ -37,15 +39,24 @@ const StackOther = () => (
     <Stack.Screen name="Other" component={OtherPages}
       options={{
         headerShown: false,
-      }}/>
+      }} />
+  </Stack.Navigator>
+);
+
+const StackMapel = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Mapel" component={MapelPages}
+      options={{
+        headerShown: false,
+      }} />
   </Stack.Navigator>
 );
 
 function mainFlow() {
   return (
     <Tab.Navigator>
-      <Tab.Screen 
-        name="Home" 
+      <Tab.Screen
+        name="Home"
         component={StackHome}
         options={{
           tabBarLabel: 'Home',
@@ -54,9 +65,9 @@ function mainFlow() {
           ),
         }}
       />
-      <Tab.Screen 
+      <Tab.Screen
         name="Mapel"
-        component={StackOther}
+        component={StackMapel}
         options={{
           tabBarLabel: 'Mapel',
           tabBarIcon: ({ color, size }) => (
@@ -64,7 +75,7 @@ function mainFlow() {
           ),
         }}
       />
-      <Tab.Screen 
+      <Tab.Screen
         name="Statistik"
         component={StackOther}
         options={{
@@ -74,7 +85,7 @@ function mainFlow() {
           ),
         }}
       />
-      <Tab.Screen 
+      <Tab.Screen
         name="Diskusi"
         component={StackOther}
         options={{
@@ -84,7 +95,7 @@ function mainFlow() {
           ),
         }}
       />
-      <Tab.Screen 
+      <Tab.Screen
         name="Keuangan"
         component={StackOther}
         options={{
@@ -94,7 +105,7 @@ function mainFlow() {
           ),
         }}
       />
-      <Tab.Screen 
+      <Tab.Screen
         name="Profile"
         component={StackOther}
         options={{
@@ -120,12 +131,12 @@ export const createRootNavigator = (signedIn = false) => {
           />
         </>
       ) : (
-        <Stack.Screen
-          name="Login"
-          component={StackLogin}
-          options={{ headerShown: false }}
-        />
-      )}
+          <Stack.Screen
+            name="Login"
+            component={StackLogin}
+            options={{ headerShown: false }}
+          />
+        )}
     </Stack.Navigator>
   )
 };

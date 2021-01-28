@@ -327,14 +327,16 @@ class Home extends Component {
       {
         datePosting: '2 hari yang lalu',
         keterangan: 'Pengumuman libur semester akhir tahun',
-        color: '#F66795',
+        color: '#41D2CA',
+        subColor: '#D8F1FF',
         url: require("../../../assets/page-under-construction-5.png")
 
       },
       {
         datePosting: '2 hari yang lalu',
-        keterangan: 'Pengumuman libur semester akhir tahun',
+        keterangan: 'Penegakan protokol covid di SMA N 1 Padang',
         color: '#FFC34E',
+        subColor: '#D8F1FF',
         url: require("../../../assets/clip-security.png")
 
       },
@@ -352,24 +354,34 @@ class Home extends Component {
         <ScrollView horizontal={true}>
           {
             todaySchedull.map((item, index) => (
-              <View style={{
-                width: 262,
-                paddingVertical: 16,
-                paddingHorizontal: 16,
-                borderRadius: 10,
-                position: 'relative',
-                overflow: 'hidden',
-                marginRight: 10,
-                backgroundColor: item.color
-              }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                  <Image source={item.url} />
+              <View>
+                <View style={{
+                  width: 262,
+                  paddingVertical: 16,
+                  paddingHorizontal: 16,
+                  borderTopRightRadius: 10,
+                  borderTopLeftRadius: 10,
+                  position: 'relative',
+                  overflow: 'hidden',
+                  marginRight: 10,
+                  backgroundColor: item.color
+                }}>
+                  <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Image source={item.url} />
+                  </View>
                 </View>
-                <View>
-                  <Text style={{ color: '#404040', fontWeight: 'bold', fontSize: 14, marginTop: 35 }}>{item.keterangan}</Text>
+                <View style={{
+                  width: 262,
+                  paddingVertical: 16,
+                  paddingHorizontal: 16,
+                  borderBottomRightRadius: 10,
+                  borderBottomLeftRadius: 10,
+                  position: 'relative',
+                  backgroundColor: item.subColor
+                }}>
+                  <Text style={{ color: '#404040', fontWeight: 'bold', fontSize: 14 }}>{item.keterangan}</Text>
                   <Text style={{ color: '#BBBBBB', fontSize: 12, marginTop: 10 }}>{item.datePosting}</Text>
                 </View>
-
               </View>
             ))
           }
