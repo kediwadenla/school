@@ -255,24 +255,29 @@ class Home extends Component {
     const todaySchedull = [
       {
         subjectName: 'Kimia',
-        time: '07.45-10.00 WIB',
-        teacherAva: 'FM',
-        teacherName: 'Floyd Miles',
-        color: '#FFC34E'
+        tanggal: '22',
+        bulan: 'Januari 2021',
+        keterangan: 'Ulangan harian Matematika',
+        color: '#F66795',
+        url: require("../../../assets/Paper.png")
+
       },
       {
-        subjectName: 'Matematika',
-        time: '07.45-10.00 WIB',
-        teacherAva: 'JD',
-        teacherName: 'John Doe',
-        color: '#41D2CA'
+        subjectName: 'Kimia',
+        tanggal: '22',
+        bulan: 'Januari 2021',
+        keterangan: 'Diskusi kelompok PPKN',
+        color: '#F66795',
+        url: require("../../../assets/group.png")
+
       },
       {
-        subjectName: 'Biologi',
-        time: '07.45-10.00 WIB',
-        teacherAva: 'JD',
-        teacherName: 'John Doe',
-        color: '#F66795'
+        subjectName: 'Kimia',
+        tanggal: '22',
+        bulan: 'Januari 2021',
+        keterangan: 'Ulangan harian Agama',
+        color: '#F66795',
+        url: require("../../../assets/Paper.png")
       }
     ];
     return (
@@ -288,14 +293,84 @@ class Home extends Component {
         <ScrollView horizontal={true}>
           {
             todaySchedull.map((item, index) => (
-              <CardPelajaran
-                key={index}
-                subjectName={item.subjectName}
-                time={item.time}
-                color={item.color}
-                teacherAva={item.teacherAva}
-                teacherName={item.teacherName}
-              />
+              <View style={{
+                width: 150,
+                paddingVertical: 16,
+                paddingHorizontal: 16,
+                borderRadius: 10,
+                position: 'relative',
+                overflow: 'hidden',
+                marginRight: 10,
+                backgroundColor: item.color
+              }}>
+                <Image style={{ width: 30, position: 'absolute', right: 25, top: 20 }} source={item.url} />
+                <View style={styles.circleContainer}>
+                  <View style={styles.circleOne} />
+                  <View style={styles.circleTwo} />
+                </View>
+                <View>
+                  <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 24, marginTop: 35 }}>{item.tanggal}</Text>
+                  <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12, marginTop: 10 }}>{item.bulan}</Text>
+                  <Text style={{ color: 'white', fontSize: 10, marginTop: 10 }}>{item.keterangan}</Text>
+                </View>
+
+              </View>
+            ))
+          }
+        </ScrollView>
+      </View>
+    );
+  }
+
+  _renderMading = () => {
+    const todaySchedull = [
+      {
+        datePosting: '2 hari yang lalu',
+        keterangan: 'Pengumuman libur semester akhir tahun',
+        color: '#F66795',
+        url: require("../../../assets/page-under-construction-5.png")
+
+      },
+      {
+        datePosting: '2 hari yang lalu',
+        keterangan: 'Pengumuman libur semester akhir tahun',
+        color: '#FFC34E',
+        url: require("../../../assets/clip-security.png")
+
+      },
+    ];
+    return (
+      <View style={{ flexDirection: 'column' }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Text style={{
+            color: FONT_BLACK,
+            fontSize: 14,
+            fontWeight: '700',
+            marginBottom: 16
+          }}>Mading Sekolah</Text>
+        </View>
+        <ScrollView horizontal={true}>
+          {
+            todaySchedull.map((item, index) => (
+              <View style={{
+                width: 262,
+                paddingVertical: 16,
+                paddingHorizontal: 16,
+                borderRadius: 10,
+                position: 'relative',
+                overflow: 'hidden',
+                marginRight: 10,
+                backgroundColor: item.color
+              }}>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                  <Image source={item.url} />
+                </View>
+                <View>
+                  <Text style={{ color: '#404040', fontWeight: 'bold', fontSize: 14, marginTop: 35 }}>{item.keterangan}</Text>
+                  <Text style={{ color: '#BBBBBB', fontSize: 12, marginTop: 10 }}>{item.datePosting}</Text>
+                </View>
+
+              </View>
             ))
           }
         </ScrollView>
@@ -323,6 +398,7 @@ class Home extends Component {
                   </View>
                   {this._renderCardTugas()}
                   {this._renderCardAgenda()}
+                  {this._renderMading()}
                 </ScrollView>
               </View >
             )
@@ -357,5 +433,31 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     resizeMode: 'contain'
+  },
+  circleContainer: {
+    position: 'absolute',
+    top: -20,
+    right: -45,
+    zIndex: -1
+  },
+  circleOne: {
+    width: 115,
+    height: 115,
+    borderRadius: 115,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    position: 'absolute',
+    top: 0,
+    right: 0
+  },
+  circleTwo: {
+    width: 152,
+    height: 152,
+    borderRadius: 152,
+    backgroundColor: 'transparent',
+    borderColor: 'rgba(255, 255, 255, 0.2)',
+    borderWidth: 10,
+    position: 'absolute',
+    top: -20,
+    right: -20,
   }
 });
