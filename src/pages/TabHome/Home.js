@@ -85,7 +85,7 @@ class Home extends Component {
 
   _renderCardTugas = () => {
     return (
-      <View>
+      <View style={{ height: 300 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={{
             color: FONT_BLACK,
@@ -101,7 +101,8 @@ class Home extends Component {
             textDecorationLine: 'underline'
           }}>Lihat Semua</Text>
         </View>
-        <ScrollView nestedScrollEnabled={true}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}
+          nestedScrollEnabled>
           <View style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -113,7 +114,9 @@ class Home extends Component {
               paddingVertical: 10,
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'center'
+              alignItems: 'center',
+              borderBottomLeftRadius: 5,
+              borderTopLeftRadius: 5
             }}>
               <Image style={styles.image} source={require('../../../assets/clip-bio-technologies.png')} />
               <Text style={{ fontWeight: "bold", color: "#404040", fontSize: 12 }}>Kimia</Text>
@@ -121,7 +124,7 @@ class Home extends Component {
             <View style={{
               backgroundColor: '#D8F1FF',
               width: '80%',
-              height: 85,
+              height: 86,
               justifyContent: "center",
               borderBottomRightRadius: 5,
               borderTopRightRadius: 5
@@ -147,7 +150,9 @@ class Home extends Component {
               paddingVertical: 10,
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'center'
+              alignItems: 'center',
+              borderBottomLeftRadius: 5,
+              borderTopLeftRadius: 5
             }}>
               <Image style={styles.image} source={require('../../../assets/clip-bio-technologies.png')} />
               <Text style={{ fontWeight: "bold", color: "#404040", fontSize: 12 }}>Kimia</Text>
@@ -155,7 +160,7 @@ class Home extends Component {
             <View style={{
               backgroundColor: '#D8F1FF',
               width: '80%',
-              height: 85,
+              height: 86,
               justifyContent: "center",
               borderBottomRightRadius: 5,
               borderTopRightRadius: 5
@@ -181,7 +186,9 @@ class Home extends Component {
               paddingVertical: 10,
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'center'
+              alignItems: 'center',
+              borderBottomLeftRadius: 5,
+              borderTopLeftRadius: 5
             }}>
               <Image style={styles.image} source={require('../../../assets/clip-bio-technologies.png')} />
               <Text style={{ fontWeight: "bold", color: "#404040", fontSize: 12 }}>Kimia</Text>
@@ -189,7 +196,7 @@ class Home extends Component {
             <View style={{
               backgroundColor: '#D8F1FF',
               width: '80%',
-              height: 85,
+              height: 86,
               justifyContent: "center",
               borderBottomRightRadius: 5,
               borderTopRightRadius: 5
@@ -215,7 +222,9 @@ class Home extends Component {
               paddingVertical: 10,
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'center'
+              alignItems: 'center',
+              borderBottomLeftRadius: 5,
+              borderTopLeftRadius: 5
             }}>
               <Image style={styles.image} source={require('../../../assets/clip-bio-technologies.png')} />
               <Text style={{ fontWeight: "bold", color: "#404040", fontSize: 12 }}>Kimia</Text>
@@ -223,7 +232,7 @@ class Home extends Component {
             <View style={{
               backgroundColor: '#D8F1FF',
               width: '80%',
-              height: 85,
+              height: 86,
               justifyContent: "center",
               borderBottomRightRadius: 5,
               borderTopRightRadius: 5
@@ -308,13 +317,11 @@ class Home extends Component {
                   fontWeight: '700',
                   color: FONT_BLACK
                 }}>Halo, {userData.name.first}</Text>
-                <ScrollView>
+                <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }} nestedScrollEnabled={true}>
                   <View style={{ flex: 1 }}>
                     {this._renderCardPelajaran()}
                   </View>
-                  <ScrollView style={{ flex: 1 }}>
-                    {this._renderCardTugas()}
-                  </ScrollView>
+                  {this._renderCardTugas()}
                   {this._renderCardAgenda()}
                 </ScrollView>
               </View >
