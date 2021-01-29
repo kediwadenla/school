@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import {
+  Image,
+} from "react-native";
 
 // pages
 import Login from './src/pages/Landing/Login';
@@ -10,6 +13,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { color } from "react-native-reanimated";
 
 
 
@@ -54,15 +58,34 @@ const StackMapel = () => (
 
 function mainFlow() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      activeColor="#00aea2"
+      inactiveColor="#95a5a6"
+      tabBarOptions={{
+        activeTintColor: '#004E89',
+        inactiveTintColor: '#D8F1FF',
+        activeBackgroundColor: '#41D2CA',
+        inactiveBackgroundColor: '#41D2CA',
+        style: { justifyContent: 'center', alignItems: 'center' }
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={StackHome}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="home" color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              focused ?
+                <Image
+                  style={{ tintColor: "#004E89" }}
+                  source={require('./assets/icontab/home.png')}
+                /> :
+                <Image
+                  source={require('./assets/icontab/home.png')}
+                />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -70,9 +93,18 @@ function mainFlow() {
         component={StackMapel}
         options={{
           tabBarLabel: 'Mapel',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="book" color={color} size={25} />
-          ),
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              focused ?
+                <Image
+                  style={{ tintColor: "#004E89" }}
+                  source={require('./assets/icontab/mapel.png')}
+                /> :
+                <Image
+                  source={require('./assets/icontab/mapel.png')}
+                />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -80,9 +112,18 @@ function mainFlow() {
         component={StackOther}
         options={{
           tabBarLabel: 'Statistik',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="piechart" color={color} size={23} />
-          ),
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              focused ?
+                <Image
+                  style={{ tintColor: "#004E89" }}
+                  source={require('./assets/icontab/statistik.png')}
+                /> :
+                <Image
+                  source={require('./assets/icontab/statistik.png')}
+                />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -90,9 +131,18 @@ function mainFlow() {
         component={StackOther}
         options={{
           tabBarLabel: 'Diskusi',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="wechat" color={color} size={27} />
-          ),
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              focused ?
+                <Image
+                  style={{ tintColor: "#004E89" }}
+                  source={require('./assets/icontab/diskusi.png')}
+                /> :
+                <Image
+                  source={require('./assets/icontab/diskusi.png')}
+                />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -100,9 +150,18 @@ function mainFlow() {
         component={StackOther}
         options={{
           tabBarLabel: 'Keuangan',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="creditcard" color={color} size={25} />
-          ),
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              focused ?
+                <Image
+                  style={{ tintColor: "#004E89" }}
+                  source={require('./assets/icontab/keuangan.png')}
+                /> :
+                <Image
+                  source={require('./assets/icontab/keuangan.png')}
+                />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -110,9 +169,18 @@ function mainFlow() {
         component={StackOther}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="user" color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              focused ?
+                <Image
+                  style={{ tintColor: "#004E89" }}
+                  source={require('./assets/icontab/profil.png')}
+                /> :
+                <Image
+                  source={require('./assets/icontab/profil.png')}
+                />
+            );
+          },
         }}
       />
     </Tab.Navigator>

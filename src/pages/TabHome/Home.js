@@ -354,18 +354,19 @@ class Home extends Component {
         <ScrollView horizontal={true}>
           {
             todaySchedull.map((item, index) => (
-              <View>
-                <View style={{
-                  width: 262,
-                  paddingVertical: 16,
-                  paddingHorizontal: 16,
-                  borderTopRightRadius: 10,
-                  borderTopLeftRadius: 10,
-                  position: 'relative',
-                  overflow: 'hidden',
-                  marginRight: 10,
-                  backgroundColor: item.color
-                }}>
+              <View key={index}>
+                <View
+                  style={{
+                    width: 262,
+                    paddingVertical: 16,
+                    paddingHorizontal: 16,
+                    borderTopRightRadius: 10,
+                    borderTopLeftRadius: 10,
+                    position: 'relative',
+                    overflow: 'hidden',
+                    marginRight: 10,
+                    backgroundColor: item.color
+                  }}>
                   <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Image source={item.url} />
                   </View>
