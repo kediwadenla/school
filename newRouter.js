@@ -7,7 +7,7 @@ import {
 import Login from './src/pages/Landing/Login';
 import Home from './src/pages/TabHome/Home';
 import OtherPages from './src/pages/TabOther/Other';
-import MapelPages from './src/pages/TabOther/Mapel';
+import MapelPages from './src/pages/TabMapel/Mapel';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 
