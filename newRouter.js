@@ -7,6 +7,7 @@ import {
 import Login from './src/pages/Landing/Login';
 import Home from './src/pages/TabHome/Home';
 import OtherPages from './src/pages/TabOther/Other';
+import StatistikPage from './src/pages/TabStatistik/Statistik';
 import MapelPages from './src/pages/TabMapel/Mapel';
 
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -14,6 +15,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { color } from "react-native-reanimated";
+import Statistik from "./src/pages/TabStatistik/Statistik";
 
 
 
@@ -50,6 +52,15 @@ const StackOther = () => (
 const StackMapel = () => (
   <Stack.Navigator>
     <Stack.Screen name="Mapel" component={MapelPages}
+      options={{
+        headerShown: false,
+      }} />
+  </Stack.Navigator>
+);
+
+const StackStatistik = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Statistik" component={StatistikPage}
       options={{
         headerShown: false,
       }} />
@@ -109,7 +120,7 @@ function mainFlow() {
       />
       <Tab.Screen
         name="Statistik"
-        component={StackOther}
+        component={Statistik}
         options={{
           tabBarLabel: 'Statistik',
           tabBarIcon: ({ color, size, focused }) => {
