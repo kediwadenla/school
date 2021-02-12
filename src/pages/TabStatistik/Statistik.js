@@ -10,12 +10,12 @@ import {
     Touchable,
     TouchableOpacity,
     TouchableHighlight,
+    Text
 } from "react-native";
 import * as homeAction from '../../actions/home';
 import { connect } from 'react-redux';
 import { FONT_BLACK } from '../../../constant/color';
 import { PieChart } from 'react-native-svg-charts';
-import { Text } from 'react-native-svg'
 
 class Statistik extends Component {
 
@@ -69,53 +69,58 @@ class Statistik extends Component {
                 key: 1,
                 amount: 86,
                 nama: 'Hadir',
+                warna: '#F66795',
                 svg: { fill: '#F66795' },
             },
             {
                 key: 2,
                 amount: 4,
                 nama: 'Izin',
+                warna: '#41D2CA',
                 svg: { fill: '#41D2CA' }
             },
             {
                 key: 3,
                 amount: 10,
                 nama: 'Tanpa Keterangan',
+                warna: '#9B5DE5',
                 svg: { fill: '#9B5DE5' }
             },
         ]
 
-        const Labels = ({ slices, height, width }) => {
+        const Labels = ({ slices }) => {
             return slices.map((slice, index) => {
-                const { labelCentroid, pieCentroid, data } = slice;
-                return (
-                    <Text
-                        key={index}
-                        x={pieCentroid[0]}
-                        y={pieCentroid[1]}
-                        fill={'white'}
-                        textAnchor={'middle'}
-                        alignmentBaseline={'middle'}
-                        fontSize={12}
-                        stroke={'black'}
-                        strokeWidth={0.2}
-                    >
-                        {data.nama} {data.amount}
-                    </Text>
-                )
+                const { data } = slice;
+
             })
         }
 
         return (
-            <PieChart
-                style={{ height: 200 }}
-                valueAccessor={({ item }) => item.amount}
-                data={data}
-                spacing={0}
-                outerRadius={'95%'}
-            >
-                <Labels />
-            </PieChart>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: -30 }}>
+                <View style={{ flex: 1 }}>
+                    <PieChart
+                        style={{ height: 200 }}
+                        valueAccessor={({ item }) => item.amount}
+                        data={data}
+                        spacing={0}
+                        outerRadius={'95%'}
+                    >
+                        <Labels />
+                    </PieChart>
+                </View>
+                <View style={{ marginTop: 60, marginLeft: 20 }}>
+                    {data.map((item, index) => (
+
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ width: 10, backgroundColor: item.warna, height: 10, marginRight: 5 }}></View>
+                            <Text key={index} style={{ color: 'black', fontSize: 14, fontWeight: 'bold' }}>
+                                {item.nama} : {item.amount} %
+                            </Text>
+                        </View>
+                    ))
+                    }
+                </View>
+            </View >
         )
     }
 
